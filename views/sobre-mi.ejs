@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('templates/head', { 
+    title: 'Sobre mí - Jair Martinez', 
+    description: 'Conoce más sobre mí, Desarrollador Web Full Stack.'
+}) %>
+
+<body>
+    <%- include('templates/header') %>
+
+    <!-- ================================
+        CONTENIDO PRINCIPAL - SOBRE MÍ
+        ================================ -->
+    <main role="main">
+        <section id="sobre-mi" aria-labelledby="titulo-sobre-mi">
+            <div class="portada-sobre minimal">
+                <span class="portada-sobre-acento"></span>
+                <h2 id="titulo-sobre-mi" class="portada-sobre-titulo minimal">Sobre mí<br><span>Conoce quién soy y qué hago.</span></h2>
+            </div>
+
+            <div class="contenedor">
+                <div class="sobre-grid" role="list">
+                    <div class="sobre-foto" role="listitem">
+                        <!-- Usamos una imagen existente como placeholder; cámbiala por tu foto real -->
+                        <img src="/img/jair-martinez.jpg" alt="Foto de Jair Martinez" loading="lazy" width="400" height="400">
+                    </div>
+
+                    <div class="sobre-texto" role="listitem">
+                        <h3 class="seccion-subtitulo">Un poco sobre mí</h3>
+                        <p>
+                            Desarrollador de aplicaciones y tecnologías web con ojo de diseñador y formación en marketing digital. Combino más de seis años trabajando como freelance y experiencia en empresas y proyectos propios para construir productos digitales útiles, con buen diseño y orientados a resultados.
+                        </p>
+                        <p>
+                            Tengo conocimientos en desarrollo frontend y backend (HTML, CSS, JavaScript, Node.js), bases de datos y estrategias de marketing digital; aporto visión técnica y estratégica para transformar ideas en soluciones escalables que generan impacto para clientes y usuarios.
+                        </p>
+                        <div class="acciones-sobre" role="group" aria-label="Acciones de contacto">
+                            <button type="button" class="btn-descargar-cv" aria-label="Descargar CV de Jair Martinez" data-file="/img/CV.pdf">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="16" height="16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="7 10 12 15 17 10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                                Descargar CV
+                            </button>
+                            <button type="button" class="btn-contacto" aria-label="Ir a la página de contacto" data-href="/contacto">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                    <polyline points="22,6 12,13 2,6" />
+                                </svg>
+                                Contactarme
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('templates/footer') %>
+</body>
+
+</html>

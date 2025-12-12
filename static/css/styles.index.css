@@ -1,0 +1,2401 @@
+/* =============================================
+	 ÍNDICE DE ORGANIZACIÓN CSS - PORTAFOLIO WEB PERSONAL
+	 =============================================
+	 1. Fuentes y Variables
+	 2. Reset y Base
+	 3. Layout
+			- Header (Navegación)
+			- Footer
+	 4. Secciones
+      - portadas minimal (Sobre mí, Portafolio, Contacto)
+      - Inicio (componentes: héroe, llamada a la acción)
+			- Sobre mí (componentes: tarjetas, iconos, botones)
+      - Portafolio (componentes: grid, botones, iconos)
+      - Detalle de Proyecto (componentes: imagen, descripción, tecnologías, badges)
+			- Servicios (componentes: cards, iconos)
+			- Contacto (componentes: formulario, botones, iconos)
+   5. Componentes globales
+	 6. Responsive
+			- pagina inicio movil
+      - pagina sobre mi movil
+      - pagina portafolio movil
+      - pagina servicios movil
+      - pagina contacto movil
+      - pagina inicio tablet
+      - pagina sobre mi tablet
+      - pagina portafolio tablet
+      - pagina servicios tablet
+      - pagina contacto tablet
+      - detalle de proyecto responsive
+
+============================================= */
+
+/* =============================================
+	 1. FUENTES Y VARIABLES
+	 ============================================= */
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/fonts/Outfit-regular/Outfit-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/fonts/Outfit-regular/Outfit-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter-regular/Inter18pt-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  /* Colores - Modo Claro */
+  --fondo-primario: #fafafa;
+  --fondo-secundario: #ffffff;
+  --texto-primario: #171717;
+  --texto-secundario: #737373;
+  --color-acento: #ffa726;
+  --color-acento-hover: #ffb74d;
+  --color-titulo: #ffa726;
+  --color-borde: #e5e5e5;
+  --fondo-nav: rgba(255, 255, 255, 0.6);
+  --color-botones: #f5f5f5;
+  /* Semántica de colores (éxito, advertencia, error) */
+  --color-success: #1a7f37;
+  --color-warning: #c06900;
+  --color-error: #c62828;
+
+  /* Sistema de Espaciado */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-12: 3rem; /* 48px */
+  --body-superior-space: 5rem; /* Espacio superior del body */
+  --body-inferior-space: 10rem; /* Espacio inferior del body */
+
+  /* Sistema de Tipografía */
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  
+
+  /* Sistema de Sombras */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  
+
+  /* Grid y Layout */
+  --grid-gap: 0.5rem; /* 8px - Gap entre cajas/cards */
+
+  /* Transiciones */
+  --transicion: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+  /* Colores - Modo Oscuro */
+  --fondo-primario: #0f0f0f;
+  --fondo-secundario: #1a1a1a;
+  --texto-primario: #f5f5f5;
+  --texto-secundario: #a8a8a8;
+  --color-acento: #ffa726;
+  --color-acento-hover: #ffb74d;
+  --color-titulo: #ffa726;
+  --color-borde: rgba(255, 255, 255, 0.08);
+  --fondo-nav: rgba(26, 26, 26, 0.6);
+  --color-botones: #262626;
+  --color-botones-hover: #333333;
+  /* Semántica de colores (modo oscuro) */
+  --color-success: #1a7f37;
+  --color-warning: #c06900;
+  --color-error: #ff6b6b;
+  /* Sombras para modo oscuro */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.6);
+}
+
+/* =============================================
+	 2. RESET Y BASE
+	 ============================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  background-color: var(--fondo-primario);
+  color: var(--texto-primario);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  max-width: 1200px;
+  margin: var(--body-superior-space) auto var(--body-inferior-space) auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Outfit", sans-serif;
+  color: var(--color-titulo);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: var(--font-size-xl); 
+  margin-bottom: var(--space-2);
+  color: var(--color-acento);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+}
+
+/* =============================================
+   3. LAYOUT
+   ============================================= */
+
+/* ================================================== */
+/* ---------- Header - Navegación Flotante ---------- */
+/* ================================================== */
+.encabezado {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.contenedor-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  background: var(--fondo-nav);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--color-borde);
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: var(--transicion);
+  animation: entradaFlotante 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contenedor-nav:hover {
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+@keyframes entradaFlotante {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.divisor-nav {
+  width: 1px;
+  height: 24px;
+  background-color: var(--color-borde);
+  margin: 0 0.5rem;
+}
+
+.avatar-nav {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+/* ================================================================= */
+/* ---------- Iconos de Navegación (agrupados con Header) ---------- */
+/* ================================================================= */
+.icono-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--texto-secundario);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: var(--transicion);
+  position: relative;
+}
+
+.icono-nav:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--texto-primario);
+  transform: translateY(-2px);
+}
+
+/* -------------------------------------------------- */
+/* Language toggle (text buttons) - Header section    */
+/* Placed here to keep header-related icon styles together */
+.idioma-toggle {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.idioma-toggle .lang-btn {
+  /* reuse icono-nav base but make flexible width and text-focused */
+  width: auto;
+  padding: 0 0.6rem;
+  min-width: 36px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--texto-secundario);
+  background: transparent;
+}
+
+.idioma-toggle .lang-btn:hover {
+  background-color: rgba(0,0,0,0.05);
+  color: var(--texto-primario);
+  transform: none;
+}
+
+.idioma-toggle .lang-btn.activo {
+  background-color: var(--color-acento);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+[data-theme="dark"] .idioma-toggle .lang-btn.activo {
+  background-color: var(--color-acento);
+  color: #111;
+}
+
+[data-theme="dark"] .icono-nav:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.icono-nav svg {
+  width: 20px;
+  height: 20px;
+}
+
+.icono-nav::before {
+  content: attr(title);
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background-color: var(--fondo-secundario);
+  color: var(--texto-primario);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--color-borde);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.icono-nav:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.icono-nav.activo {
+  color: var(--color-acento);
+}
+
+.icono-nav.activo::before {
+  display: none;
+}
+
+.icono-nav.activo::after {
+  content: "";
+}
+
+/* ============================================ */
+/* ---------- Toggle de Tema ---------- */
+/* ============================================ */
+[data-theme="dark"] .cambiar-tema .icono-sol {
+  display: none;
+}
+
+[data-theme="light"] .cambiar-tema .icono-luna {
+  display: none;
+}
+
+/* -------------------------------------------------- */
+/* Language toggle (single button) - Header section   */
+/* Reuses .icono-nav base styles and mirrors cambiar-tema behaviour */
+.cambiar-idioma {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.6rem;
+  min-width: 44px;
+  border-radius: 50%;
+}
+
+.cambiar-idioma .lang-label {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--texto-secundario);
+}
+
+.cambiar-idioma:hover {
+  background-color: rgba(0,0,0,0.05);
+  color: var(--texto-primario);
+  transform: translateY(-2px);
+}
+
+[data-theme="dark"] .cambiar-idioma .lang-label {
+  color: var(--texto-secundario);
+}
+
+
+/* ============================================ */
+/* ---------- Footer - Pie Flotante ---------- */
+/* ============================================ */
+.pie-flotante {
+  position: fixed;
+  bottom: 2rem;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 4rem);
+  left: 2rem;
+  right: 2rem;
+  pointer-events: none;
+}
+
+.contenedor-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--fondo-nav);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--color-borde);
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: var(--transicion);
+  pointer-events: auto;
+}
+
+.pie-izquierda {
+  animation: entradaFlotante 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+}
+
+.pie-derecha {
+  animation: entradaFlotante 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
+}
+
+.contenedor-footer:hover {
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.texto-footer {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--texto-secundario);
+  white-space: nowrap;
+}
+
+.texto-footer strong {
+  color: var(--texto-primario);
+  font-weight: 600;
+}
+
+.separador-footer {
+  color: var(--color-borde);
+  font-size: 0.875rem;
+}
+
+.enlace-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: var(--texto-secundario);
+  background: transparent;
+  transition: var(--transicion);
+  text-decoration: none;
+}
+
+.enlace-footer:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--texto-primario);
+  transform: scale(1.1);
+}
+
+[data-theme="dark"] .enlace-footer:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.enlace-footer svg {
+  width: 18px;
+  height: 18px;
+}
+/* =============================== */
+/* Enlaces legales */
+/* =============================== */
+.enlace-legal {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  color: var(--texto-secundario);
+  background: transparent;
+  transition: var(--transicion);
+  text-decoration: none;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.enlace-legal:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--texto-primario);
+}
+
+[data-theme="dark"] .enlace-legal:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.enlace-legal svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.enlace-legal span {
+  font-weight: 500;
+}
+
+/* =============================================
+   4. SECCIONES
+   ============================================= */
+
+/* =============================== */
+/* ---------- Portadas minimal ---------- */
+/* =============================== */
+
+/* =============================== */
+/* Portadas (comunes para Sobre mí / Portafolio / Contacto) */
+/* =============================== */
+.portada-sobre.minimal,
+.portada-portafolio.minimal,
+.portada-contacto.minimal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--space-5) var(--space-8) var(--space-4) var(--space-8);
+  background: var(--fondo-nav);
+  border-radius: var(--space-3);
+  box-shadow: var(--shadow-sm);
+  margin: var(--space-8) auto var(--space-6) auto;
+  max-width: 820px;
+  min-width: 320px;
+  text-align: left;
+  position: relative;
+}
+
+.portada-sobre-acento,
+.portada-acento,
+.portada-contacto-acento {
+  display: block;
+  width: var(--space-8);
+  height: var(--space-1);
+  background: linear-gradient(90deg, var(--color-acento), var(--color-acento-hover));
+  border-radius: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+
+.portada-sobre-titulo.minimal,
+.portada-titulo.minimal,
+.portada-contacto-titulo.minimal {
+  font-family: "Outfit", sans-serif;
+  font-size: var(--font-size-xl);
+  color: var(--texto-primario);
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+  letter-spacing: -0.01em;
+  line-height: 1.22;
+}
+.portada-sobre-titulo.minimal span,
+.portada-titulo.minimal span,
+.portada-contacto-titulo.minimal span {
+  color: var(--color-acento);
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  display: block;
+  margin-top: 0;
+}
+.portada-descripcion.minimal,
+.portada-contacto-descripcion.minimal {
+  font-size: var(--font-size-sm);
+  color: var(--texto-secundario);
+  margin-bottom: 0;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+
+
+/* =============================== */
+/* ---------- Inicio ---------- */
+/* =============================== */
+
+/* =============================== */
+/* Portada principal (Hero)        */
+/* =============================== */
+
+.hero-content {
+  padding-bottom: var(--space-8);
+}
+
+.perfil-circulo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-acento);
+  box-shadow: var(--shadow-md);
+  transition: var(--transicion);
+  margin-bottom: var(--space-2); /* Más compacto debajo de la imagen */
+}
+
+.perfil-circulo:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-lg);
+}
+
+.subtitulo {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--texto-primario);
+  margin-bottom: var(--space-1); /* Más compacto bajo subtítulo */
+  letter-spacing: -0.01em;
+}
+.descripcion {
+  font-size: var(--font-size-sm);
+  color: var(--texto-secundario);
+  margin-bottom: var(--space-3); /* Más compacto antes de iconos sociales */
+  line-height: 1.5;
+  font-weight: 400;
+}
+/* =============================== */
+/* Iconos de redes sociales portada */
+/* =============================== */
+.iconos-redes-sociales {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+.iconos-redes-sociales a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--fondo-secundario);
+  border: 1px solid var(--color-borde);
+  transition: var(--transicion);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+.iconos-redes-sociales a:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-acento);
+  background: var(--color-acento);
+}
+.iconos-redes-sociales a svg {
+  width: 24px;
+  height: 24px;
+  transition: var(--transicion);
+  stroke: var(--texto-secundario);
+}
+.iconos-redes-sociales a:hover svg {
+  stroke: #000;
+  transform: scale(1.1);
+}
+/* =============================== */
+/* Grid de accesos rápidos y tarjetas*/
+/* =============================== */
+.cajas-accesos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 150px);
+  gap: var(--grid-gap);
+}
+.caja-acceso,
+.caja-titulo {
+  border: 1px solid var(--color-borde);
+  transition: var(--transicion);
+}
+
+.caja-acceso {
+  background: var(--fondo-nav);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-md);
+}
+.caja-acceso:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-acento);
+}
+.caja-titulo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--texto-primario);
+  margin: 0;
+  padding: 0.4rem 0.85rem;
+  border-radius: 20px;
+  background: transparent;
+  width: fit-content;
+}
+.caja-titulo svg {
+  stroke: var(--texto-secundario);
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+.caja-contenido {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0 -0.5rem;
+  padding: 0 0.5rem;
+}
+.caja-contenido::-webkit-scrollbar {
+  width: 4px;
+}
+.caja-contenido::-webkit-scrollbar-track {
+  background: transparent;
+}
+.caja-contenido::-webkit-scrollbar-thumb {
+  background: var(--color-borde);
+  border-radius: 10px;
+}
+.caja-contenido::-webkit-scrollbar-thumb:hover {
+  background: var(--color-acento);
+}
+.caja-tecnologias {
+  grid-column: 1 / 2;
+  grid-row: 3 / 5;
+}
+.caja-experiencia {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+.caja-educacion {
+  grid-column: 3 / 5;
+  grid-row: 1 / 3;
+}
+.caja-proyectos {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+.caja-contacto {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+}
+.caja-newsletter {
+  grid-column: 3 / 5;
+  grid-row: 4 / 5;
+}
+.caja-ultimo-proyecto {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+}
+.caja-musica {
+  grid-column: 4 / 5;
+  grid-row: 3 / 4;
+}
+
+
+/* =============================== */
+/* Música / Spotify                */
+/* =============================== */
+.spotify-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  padding: var(--space-2) 0;
+}
+.spotify-album-container {
+  flex-shrink: 0;
+}
+.spotify-album {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  animation: spinAlbum 20s linear infinite;
+  transition: var(--transicion);
+  border: 2px solid var(--color-borde);
+}
+.album-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.spotify-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.spotify-overlay svg {
+  stroke: #fff;
+}
+.spotify-link:hover .spotify-album {
+  animation-play-state: paused;
+}
+.spotify-link:hover .spotify-overlay {
+  opacity: 1;
+}
+.spotify-album img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.spotify-info-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+  flex: 1;
+}
+.spotify-song,
+.spotify-artist {
+  margin: 0;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.spotify-song {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--texto-primario);
+}
+
+.spotify-artist {
+  font-size: var(--font-size-xs);
+  color: var(--texto-secundario);
+}
+@keyframes spinAlbum {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* =============================== */
+/* Tarjetas de experiencia */
+/* =============================== */
+.lista-experiencia {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+.lista-experiencia::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--color-borde);
+}
+.experiencia-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "empresa fecha" "cargo cargo";
+  gap: 0.35rem;
+  position: relative;
+}
+.experiencia-item::before {
+  content: "";
+  position: absolute;
+  left: -1.75rem;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  background: var(--color-acento);
+  border-radius: 50%;
+  border: 2px solid var(--fondo-nav);
+  z-index: 1;
+}
+.exp-empresa {
+  grid-area: empresa;
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--texto-primario);
+  line-height: 1.4;
+}
+.exp-cargo {
+  grid-area: cargo;
+  font-size: var(--font-size-sm);
+  color: var(--texto-secundario);
+  line-height: 1.5;
+  font-weight: 500;
+}
+.exp-fecha {
+  grid-area: fecha;
+  font-size: var(--font-size-xs);
+  color: var(--color-acento);
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+/* =============================== */
+/* Tarjeta de educación           */
+/* =============================== */
+.lista-educacion {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+.lista-educacion::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--color-borde);
+}
+.educacion-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "institucion fecha" "titulo titulo";
+  gap: 0.35rem;
+  position: relative;
+}
+.educacion-item::before {
+  content: "";
+  position: absolute;
+  left: -1.75rem;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  background: var(--color-acento);
+  border-radius: 50%;
+  border: 2px solid var(--fondo-nav);
+  z-index: 1;
+}
+.edu-institucion {
+  grid-area: institucion;
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--texto-primario);
+  line-height: 1.4;
+}
+.edu-titulo {
+  grid-area: titulo;
+  font-size: var(--font-size-sm);
+  color: var(--texto-secundario);
+  line-height: 1.5;
+  font-weight: 500;
+}
+.edu-fecha {
+  grid-area: fecha;
+  font-size: var(--font-size-xs);
+  color: var(--color-acento);
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+/* =============================== */
+/* Tecnologías                     */
+/* =============================== */
+.lista-tecnologias {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+  align-content: center;
+}
+.tech-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--transicion);
+}
+.tech-item svg {
+  transition: var(--transicion);
+}
+.tech-item:hover {
+  background: var(--fondo-secundario);
+  transform: translateY(-4px);
+}
+.tech-item:hover svg {
+  transform: scale(1.2);
+  filter: brightness(1.3) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+/* Botones principales moved to "5. Componentes generales" (ver sección 5) */
+
+/* Tarjeta de Contacto (Inicio)    */
+.contacto-cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.contacto-email {
+  font-size: var(--font-size-sm);
+  color: var(--texto-secundario);
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+
+/* Newsletter / Formulario moved to "5. Componentes generales" (ver sección 5) */
+
+/* =============================== */
+/* ---------- Sobre mí ---------- */
+/* =============================== */
+
+/* Portada minimal para la sección "Sobre mí" (usada via sección compartida más arriba) */
+/* Usar las reglas en "Portadas (comunes para Sobre mí / Portafolio / Contacto)" en la parte superior del índice */
+
+.sobre-grid {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  max-width: 1100px;
+  margin: var(--space-12) auto;
+  padding: 0 var(--space-4);
+}
+.sobre-foto {
+  flex: 0 0 360px;
+}
+.sobre-foto img {
+  width: 100%;
+  height: auto;
+  max-width: 360px;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid var(--color-acento);
+  box-shadow: var(--shadow-md);
+  display: block;
+}
+.sobre-texto {
+  flex: 1 1 0;
+  color: var(--texto-primario);
+}
+.sobre-texto p {
+  margin-bottom: var(--space-3);
+  color: var(--texto-secundario);
+  line-height: 1.6;
+}
+
+/* Acciones (botones) dentro de Sobre mí */
+.acciones-sobre {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  align-items: center;
+}
+.acciones-sobre .btn-descargar-cv,
+.acciones-sobre .btn-contacto {
+  width: auto; /* override global width:100% for buttons inside acciones-sobre */
+}
+
+
+/* =============================================
+   PORTAFOLIO (Portada y Grid Masonry)
+   ============================================= */
+
+/* Las reglas específicas de portada para Portafolio están definidas en la sección
+  "Portadas (comunes para Sobre mí / Portafolio / Contacto)" más arriba. */
+
+.cajas-portafolio {
+  margin: var(--space-12) auto 0;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--grid-gap);
+  justify-content: flex-start;
+}
+
+.caja-portafolio {
+  background: var(--fondo-secundario);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--color-borde);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: var(--transicion);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-2);
+  width: calc(33.333% - 5.5px);
+  margin-bottom: var(--grid-gap);
+  cursor: pointer;
+}
+
+.caja-portafolio:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-acento);
+}
+
+.imagen-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--fondo-secundario);
+}
+
+.imagen-container img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  transition: var(--transicion);
+}
+
+.caja-portafolio:hover .imagen-container img {
+  transform: scale(1.02);
+}
+
+.info-proyecto {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--space-4);
+  background: linear-gradient(
+    to top, 
+    rgba(0, 0, 0, 0.75) 40%, 
+    rgba(0, 0, 0, 0.4) 80%, 
+    transparent 100%
+  );
+}
+
+.caja-portafolio h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.fecha-proyecto {
+  margin: 0;
+  color: var(--color-acento);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+#proyecto-2 .imagen-container img,
+#proyecto-5 .imagen-container img,
+#proyecto-8 .imagen-container img {
+  height: 240px;
+}
+
+/* Nota: la regla original de .caja-portafolio button fue centralizada en la sección 5 (Componentes generales).
+  Esto evita duplicados. Si necesita una variante específica de tarjeta, crear .btn--card en sección 5.
+*/
+
+/* =============================== */
+/* ---------- Detalle de Proyecto ---------- */
+/* =============================== */
+
+#proyecto-detalle {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-6);
+}
+
+.proyecto-imagen-destacada {
+  width: 100%;
+  height: auto;
+  margin-bottom: var(--space-12);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.proyecto-imagen-destacada img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.proyecto-contenido {
+  background: var(--fondo-secundario);
+  padding: var(--space-12) var(--space-8);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-md);
+}
+
+.proyecto-encabezado {
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-borde);
+  padding-bottom: var(--space-6);
+}
+
+.proyecto-encabezado h2 {
+  font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+  color: var(--color-titulo);
+  letter-spacing: -0.02em;
+}
+
+.proyecto-fecha {
+  color: var(--texto-secundario);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.proyecto-estado {
+  margin-bottom: var(--space-8);
+}
+
+.badge {
+  display: inline-block;
+  padding: var(--space-2) var(--space-4);
+  border-radius: 0.5rem;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+.badge-completado {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: rgb(34, 197, 94);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.badge-en-progreso {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: rgb(59, 130, 246);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.badge-pausado {
+  background-color: rgba(249, 115, 22, 0.15);
+  color: rgb(249, 115, 22);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+.proyecto-descripcion {
+  margin-bottom: var(--space-12);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.proyecto-descripcion h3,
+.proyecto-tecnologias h3 {
+  font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  color: var(--texto-primario);
+  letter-spacing: -0.01em;
+}
+
+.proyecto-descripcion p {
+  line-height: 1.8;
+  color: var(--texto-secundario);
+  font-size: var(--font-size-base);
+}
+
+.proyecto-tecnologias {
+  margin-bottom: var(--space-12);
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tech-list li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tech-tag {
+  display: inline-block;
+  background-color: var(--color-acento);
+  color: #000;
+  padding: var(--space-2) var(--space-4);
+  border-radius: 0.5rem;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.proyecto-acciones {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.btn-primario,
+.btn-secundario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: var(--transicion);
+  font-size: var(--font-size-base);
+  letter-spacing: 0.3px;
+}
+
+.btn-primario {
+  background-color: var(--color-acento);
+  color: #000;
+}
+
+.btn-primario:hover {
+  background-color: var(--color-acento-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secundario {
+  background-color: transparent;
+  color: var(--texto-primario);
+  border: 1.5px solid var(--color-borde);
+}
+
+.btn-secundario:hover {
+  background-color: var(--fondo-primario);
+  border-color: var(--color-acento);
+}
+
+.proyecto-no-encontrado {
+  text-align: center;
+  padding: var(--space-12) var(--space-6);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.proyecto-no-encontrado h1 {
+  font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-4);
+  color: var(--color-titulo);
+  letter-spacing: -0.02em;
+}
+
+.proyecto-no-encontrado p {
+  color: var(--texto-secundario);
+  margin-bottom: var(--space-8);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+}
+
+/* =============================================
+                servicios 
+   ============================================= */
+
+   
+   /* =============================================
+                página de contacto
+   ============================================= */
+
+.contenedor-contacto {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--space-4) var(--space-12) var(--space-4);
+}
+
+/* Las reglas específicas de portada para Contacto están definidas en la sección
+  "Portadas (comunes para Sobre mí / Portafolio / Contacto)" más arriba. */
+
+
+/* Subtítulos de secciones */
+.seccion-subtitulo {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-4);
+  color: var(--texto-primario);
+}
+
+/* Redes sociales */
+.contacto-redes {
+  margin: var(--space-12) auto var(--space-8) auto;
+}
+
+.redes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-4);
+}
+
+.red-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--fondo-secundario);
+  border: 1px solid var(--color-borde);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--texto-primario);
+  transition: var(--transicion);
+  font-weight: 500;
+  font-size: var(--font-size-base);
+}
+
+.red-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-acento);
+  color: var(--color-acento);
+}
+
+.red-card svg {
+  flex-shrink: 0;
+}
+
+/* Formulario de contacto */
+.contacto-formulario {
+  margin-bottom: var(--space-8);
+}
+
+.form-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.form-group label {
+  font-weight: 500;
+  color: var(--texto-primario);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-1);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: var(--space-2) var(--space-3);
+  background: var(--fondo-secundario);
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  color: var(--texto-primario);
+  font-family: "Inter", sans-serif;
+  font-size: var(--font-size-base);
+  transition: var(--transicion);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-acento);
+  box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--texto-secundario);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+
+/* Botón de envío movido a "5. Componentes generales" (ver sección 5) */
+
+/* Newsletter */
+.contacto-newsletter {
+  background: var(--fondo-secundario);
+  border: 1px solid var(--color-borde);
+  border-radius: 16px;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.newsletter-contenido {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.newsletter-icon {
+  flex-shrink: 0;
+  color: var(--color-acento);
+}
+
+.newsletter-texto h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-1);
+  color: var(--texto-primario);
+}
+
+.newsletter-texto p {
+  color: var(--texto-secundario);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.form-newsletter {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.form-newsletter input {
+  flex: 1;
+  padding: var(--space-2) var(--space-3);
+  background: var(--fondo-primario);
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  color: var(--texto-primario);
+  font-family: "Inter", sans-serif;
+  font-size: var(--font-size-base);
+  transition: var(--transicion);
+}
+
+.form-newsletter input:focus {
+  outline: none;
+  border-color: var(--color-acento);
+  box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.1);
+}
+
+.form-newsletter input::placeholder {
+  color: var(--texto-secundario);
+}
+
+/* Botón newsletter movido a "5. Componentes generales" (ver sección 5) */
+
+   /* =============================================
+             5. Componentes generales
+   ============================================= */
+
+/* -------------------------------
+   Componentes compartidos (Botones, Newsletter, Formularios)
+   Estas reglas son utilizadas por varias secciones y se agrupan aquí
+   para evitar duplicación en las secciones específicas.
+   NOTA: Las variantes responsivas permanecen en la sección Responsive.
+   ------------------------------- */
+
+/* Usos conocidos (trazabilidad):
+  - views/sobre-mi.ejs: utiliza .sobre-grid y .acciones-sobre (botones: .btn-descargar-cv, .btn-contacto)
+  - views/index.ejs: formulario de newsletter con clase .newsletter-form
+  - views/portafolio.ejs: portada (.portada-portafolio.minimal) y tarjetas (.caja-portafolio)
+  - views/contacto.ejs: portada (.portada-contacto.minimal) y sección .contacto-newsletter
+  NOTA: Mantener aquí la "fuente de verdad" para estos componentes y evitar duplicados en otros archivos.
+*/
+
+.btn-descargar-cv {
+  padding: var(--space-3) var(--space-4);
+  width: 100%;
+}
+.btn-contacto {
+  padding: 0.65rem 0.85rem;
+}
+.btn svg,
+.btn-descargar-cv svg,
+.btn-contacto svg,
+.btn-enviar svg,
+.btn-newsletter svg,
+.caja-portafolio button svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+}
+
+/* Bloque base compartido para botones usados en varias secciones.
+   Mantener aquí estilos comunes para evitar duplicados.
+   No incluir botones que tengan definiciones propias más específicas
+   (.newsletter-form button, .form-newsletter .btn-newsletter, .caja-portafolio button,
+   .btn-newsletter) para evitar re-declaraciones redundantes más abajo.
+*/
+.btn,
+.btn-descargar-cv,
+.btn-contacto,
+.btn-enviar,
+.btn-newsletter,
+.caja-portafolio button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background: transparent;
+  color: var(--texto-primario);
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transicion);
+}
+.btn-descargar-cv {
+  width: 100%;
+}
+.btn-descargar-cv:hover,
+.btn-contacto:hover,
+.btn-enviar:hover {
+  background: var(--color-acento);
+  border-color: var(--color-acento);
+  color: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 167, 38, 0.3);
+}
+
+/* Newsletter / Formulario */
+.newsletter-cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.newsletter-texto {
+  font-size: var(--font-size-sm);
+  color: var(--texto-secundario);
+  line-height: 1.5;
+  margin: 0;
+}
+.newsletter-form {
+  display: flex;
+  gap: var(--space-2);
+}
+.newsletter-form input[type="email"] {
+  padding: 0.65rem 0.85rem;
+  background: transparent;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  color: var(--texto-primario);
+  font-size: var(--font-size-sm);
+  transition: var(--transicion);
+  flex: 1;
+  background: var(--fondo);
+  font-family: "Inter", sans-serif;
+}
+.newsletter-form input[type="email"]:focus {
+  outline: none;
+  border-color: var(--color-acento);
+}
+.newsletter-form input[type="email"]::placeholder {
+  color: var(--texto-secundario);
+  opacity: 0.6;
+}
+.newsletter-form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  flex-shrink: 0;
+  font-weight: 600;
+  transition: var(--transicion);
+  width: auto;
+}
+.newsletter-form button:hover {
+  background: var(--color-acento);
+  border-color: var(--color-acento);
+  color: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 167, 38, 0.3);
+}
+.newsletter-form button svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+}
+
+/* Mensajes del newsletter (alertas dentro de la tarjeta) */
+.newsletter-message {
+  margin-top: 0.6rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.04);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.newsletter-message--ok {
+  color: var(--color-success);
+}
+.newsletter-message--exists {
+  color: var(--color-warning);
+}
+.newsletter-message--invalid,
+.newsletter-message--error {
+  color: var(--color-error);
+}
+.newsletter-message--rate_limit {
+  color: var(--color-warning);
+}
+.newsletter-message--spam {
+  color: var(--color-error);
+}
+
+/* Botón de envío (formularios) */
+.btn-enviar {
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-botones);
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  align-self: flex-start;
+  box-shadow: var(--shadow-sm);
+}
+.btn-enviar:hover {
+  background: var(--color-acento);
+  color: #fff;
+  border-color: var(--color-acento);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+.btn-enviar:active {
+  transform: translateY(0);
+}
+
+/* Nota: la variante específica .btn-newsletter se define más abajo
+   para la página de Contacto. Se elimina la definición genérica aquí
+   para evitar duplicados y mantener una única fuente de verdad. */
+
+/* Restaurar estilos originales específicos (anulan la consolidación cuando es necesario)
+   - .caja-portafolio button: mantener el diseño de las tarjetas de portafolio
+   - .btn-newsletter: aseguramos borde y color como en diseño original
+*/
+.caja-portafolio button {
+  margin: var(--space-2) 0 0 0;
+  padding: var(--space-3) var(--space-4);
+  width: 100%;
+}
+.caja-portafolio button:hover {
+  background: var(--color-acento);
+  border-color: var(--color-acento);
+  color: #000;
+  transform: translateY(-1px);
+}
+
+
+/* Restaurar diseño ORIGINAL del botón de la newsletter en la página Inicio
+   (selector: .newsletter-form button). Este botón debe ser una versión
+   compacta y transparente con borde (diferente del botón de contacto).
+*/
+.newsletter-form button {
+  padding: 0.65rem 0.85rem;
+  background: transparent;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  color: var(--texto-primario);
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: var(--transicion);
+  width: auto;
+}
+.newsletter-form button:hover {
+  background: var(--color-acento);
+  border-color: var(--color-acento);
+  color: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 167, 38, 0.3);
+}
+
+/* Asegurar diseño ORIGINAL del botón newsletter en la página Contacto
+   (selector: .btn-newsletter). Variante con fondo y texto en blanco al hover.
+*/
+.btn-newsletter {
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-botones);
+  color: var(--texto-primario);
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: var(--transicion);
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+}
+.btn-newsletter:hover {
+  background: var(--color-acento);
+  color: #fff;
+  border-color: var(--color-acento);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Override para evitar que reglas globales (.form-newsletter button) hagan el botón demasiado ancho
+   - En formulario de contacto el botón tiene clase .btn-newsletter dentro de .form-newsletter
+   - Esta regla asegura que en escritorio el botón sea compacto; las reglas responsivas móviles siguen aplicando width:100% cuando corresponde.
+*/
+.form-newsletter .btn-newsletter {
+  width: auto;
+  max-width: none;
+}
+
+   /* =============================================
+              6. Responsive general
+   ============================================= */
+
+/* =============================================
+   responsive footer móvil
+   ============================================= */
+@media (max-width: 600px) {
+  .pie-flotante {
+    position: static;
+    width: 100%;
+    left: unset;
+    right: unset;
+    bottom: unset;
+    z-index: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-8) 0 0 0;
+    background: none;
+    box-shadow: none;
+    pointer-events: auto;
+  }
+  .contenedor-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+    padding: var(--space-1) var(--space-2);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 420px;
+    font-size: var(--font-size-xs);
+    margin: 0 var(--space-2) var(--space-2) var(--space-2);
+    background: var(--fondo-nav);
+    border: 1px solid var(--color-borde);
+    box-shadow: var(--shadow-sm);
+  }
+  .texto-footer {
+    font-size: var(--font-size-xs);
+    text-align: center;
+    max-width: 100%;
+    word-break: break-word;
+    margin: 0;
+    background: none;
+  }
+  .enlace-footer {
+    width: 22px;
+    height: 22px;
+    font-size: 0;
+    border-radius: 6px;
+    background: transparent;
+    border: 1px solid var(--color-borde);
+    margin: 0 var(--space-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transicion);
+  }
+  .enlace-footer svg {
+    width: 12px;
+    height: 12px;
+  }
+  .enlace-legal {
+    font-size: var(--font-size-xs);
+    padding: var(--space-1) var(--space-2);
+    gap: var(--space-1);
+    border-radius: 8px;
+    max-width: 100%;
+    word-break: break-word;
+    background: none;
+    border: none;
+    margin: 0;
+    min-height: 22px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+
+      /* =============================================
+                responsive página de inicio móvil 
+   ============================================= */
+
+@media (max-width: 600px) {
+  #inicio {
+    gap: var(--space-4);
+    padding: var(--space-2) 0;
+    min-width: 0;
+  }
+  .hero-content {
+    padding: var(--space-5) var(--space-4) var(--space-4) var(--space-4);
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: var(--space-3);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--space-2);
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    position: relative;
+  }
+  .perfil-circulo {
+    width: 64px;
+    height: 64px;
+    margin-bottom: var(--space-1);
+    min-width: 48px;
+  }
+  h1#titulo-principal {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-1);
+    word-break: break-word;
+    text-align: center;
+  }
+  .subtitulo {
+    font-size: var(--font-size-sm);
+    word-break: break-word;
+    text-align: center;
+    margin-bottom: var(--space-1);
+  }
+  .descripcion {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--space-1);
+    word-break: break-word;
+    text-align: center;
+  }
+  .iconos-redes-sociales {
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .iconos-redes-sociales a {
+    width: 36px;
+    height: 36px;
+    min-width: 28px;
+    border-radius: 8px;
+    font-size: 0;
+    margin-bottom: var(--space-1);
+  }
+  .iconos-redes-sociales a svg {
+    width: 18px;
+    height: 18px;
+  }
+  .btn-descargar-cv,
+  .btn-contacto {
+    width: 100%;
+    margin-top: var(--space-2);
+    font-size: var(--font-size-sm);
+    padding: var(--space-2) var(--space-3);
+    justify-content: center;
+  }
+  .cajas-accesos {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
+  }
+  .caja-acceso {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: var(--space-4);
+    border-radius: 16px;
+    max-width: 420px;
+  }
+  .caja-titulo {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 0 0 var(--space-2) 0;
+    padding: var(--space-2);
+    border-radius: 12px;
+  }
+}
+
+
+/* =============================================
+   responsive página sobre mi móvil
+   ============================================= */
+@media (max-width: 600px) {
+
+  /* Estructura: apilar la foto y el texto, añadir padding lateral
+     y garantizar legibilidad en móviles pequeños. */
+  .sobre-grid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin: var(--space-6) auto;
+    padding: 0 var(--space-3);
+    box-sizing: border-box;
+  }
+
+  .sobre-foto {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .sobre-foto img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    border-radius: 10px;
+    max-height: 360px;
+    object-fit: cover;
+  }
+
+  .sobre-texto {
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .sobre-texto p {
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+  }
+
+  /* Botones: ocupar ancho completo en móvil y apilar */
+  .acciones-sobre {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-2);
+    width: 100%;
+  }
+
+  .acciones-sobre .btn-descargar-cv,
+  .acciones-sobre .btn-contacto {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Alineación de portada en móvil: margen lateral para separar el fondo del borde */
+  .portada-sobre.minimal {
+    margin: var(--space-6) var(--space-2) var(--space-4) var(--space-2);
+    box-sizing: border-box;
+  }
+  }
+
+/* =============================================
+   responsive página portafolio móvil
+   ============================================= */
+
+@media (max-width: 600px) {
+
+  .cajas-portafolio {
+    margin: var(--space-4) 0 0;
+    width: 100%;
+    padding: 0 var(--space-2);
+    box-sizing: border-box;
+  }
+
+  .caja-portafolio {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: var(--space-3);
+  }
+
+  /* Alineación de portada en móvil: margen lateral para separar el fondo del borde */
+  .portada-portafolio.minimal {
+    margin: var(--space-6) var(--space-2) var(--space-4) var(--space-2);
+    box-sizing: border-box;
+  }
+
+  
+}
+
+/* =============================== */
+/* responsive página de servicios móvil */
+/* =============================== */
+
+/* =============================== */
+/* responsive página de contacto móvil */
+/* =============================== */
+@media (max-width: 600px) {
+
+  .contenedor-contacto {
+    padding: 0 var(--space-2) var(--space-8) var(--space-2);
+  }
+  .contacto-redes {
+    margin: var(--space-6) auto var(--space-4) auto;
+  }
+  .redes-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--space-3);
+  }
+  .contacto-formulario {
+    margin-bottom: var(--space-6);
+  }
+  .contacto-newsletter {
+    padding: var(--space-4);
+  } 
+  .btn-newsletter {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-top: var(--space-2);
+    white-space: normal;
+    font-size: var(--font-size-sm);
+    padding-left: var(--space-1);
+    padding-right: var(--space-1);
+    padding-top: var(--space-2);
+    padding-bottom: var(--space-2);
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+
+/* =============================================
+   responsive pagina de inicio tablet
+   ============================================= */
+@media (min-width: 601px) and (max-width: 900px) {
+    .hero-content {
+      padding-left: var(--space-4);
+      padding-right: var(--space-4);
+    }
+  .cajas-accesos {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: var(--space-4);
+    margin-left: var(--space-4);
+    margin-right: var(--space-4);
+  }
+  .caja-tecnologias {
+    grid-column: 1 / 3;
+    grid-row: auto;
+  }
+  .caja-experiencia {
+    grid-column: 1 / 3;
+    grid-row: auto;
+  }
+  .caja-educacion {
+    grid-column: 1 / 3;
+    grid-row: auto;
+  }
+  .caja-proyectos {
+    grid-column: 1 / 2;
+    grid-row: auto;
+  }
+  .caja-contacto {
+    grid-column: 2 / 3;
+    grid-row: auto;
+  }
+  .caja-newsletter {
+    grid-column: 1 / 3;
+    grid-row: auto;
+  }
+  .caja-ultimo-proyecto {
+    grid-column: 1 / 2;
+    grid-row: auto;
+  }
+  .caja-musica {
+    grid-column: 2 / 3;
+    grid-row: auto;
+  }
+}
+
+/* =============================================
+   responsive página sobre mi tablet
+   ============================================= */
+@media (min-width: 601px) and (max-width: 900px) {
+
+  /* Reducir el ancho fijo de la foto y ajustar el gap para tablets */
+  .sobre-grid {
+    gap: var(--space-6);
+    margin: var(--space-8) auto;
+    padding: 0 var(--space-4);
+  }
+
+  .sobre-foto {
+    flex: 0 0 280px;
+  }
+
+  .sobre-foto img {
+    max-width: 280px;
+    max-height: 280px;
+  }
+
+  .sobre-texto p {
+    font-size: var(--font-size-base);
+  }
+
+  .acciones-sobre {
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .acciones-sobre .btn-descargar-cv,
+  .acciones-sobre .btn-contacto {
+    width: auto;
+    min-width: 160px;
+  }
+
+  
+}
+
+/* =============================================
+   responsive página portafolio tablet
+   ============================================= */
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .cajas-portafolio {
+    margin: var(--space-6) 0 0;
+    padding: 0 var(--space-4);
+  }
+  
+}
+
+   /* =============================================
+   responsive página contacto tablet
+   ============================================= */
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .contenedor-contacto {
+    padding: 0 var(--space-4) var(--space-10) var(--space-4);
+  }
+  .contacto-redes {
+    margin: var(--space-8) auto var(--space-6) auto;
+  }
+
+  /* Portada (contacto) - margen lateral en tablet */
+  .portada-contacto.minimal {
+    margin-left: var(--space-2);
+    margin-right: var(--space-2);
+  }
+}
+
+
+ 
+/* =============================================
+   detalle de proyecto responsive
+   ============================================= */
+@media (max-width: 768px) {
+  #proyecto-detalle {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .proyecto-imagen-destacada {
+    margin-bottom: var(--space-8);
+  }
+
+  .proyecto-contenido {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .proyecto-encabezado {
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-4);
+  }
+
+  .proyecto-encabezado h1 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-2);
+  }
+
+  .proyecto-descripcion {
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-4);
+  }
+
+  .proyecto-descripcion h2,
+  .proyecto-tecnologias h2 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-3);
+  }
+
+  .tech-list {
+    gap: var(--space-2);
+  }
+
+  .proyecto-acciones {
+    gap: var(--space-3);
+    flex-direction: column;
+  }
+
+  .btn-primario,
+  .btn-secundario {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+  }
+}  
+#proyecto-detalle {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-6);
+}
+}
+
+/* Reaplicar reglas de footer para tablet al final de la sección responsive
+   (última prioridad) para asegurar que no queden sobreescritas por cambios
+   accidentales anteriores. Sólo afecta pantallas entre 601px y 900px. */
+@media (min-width: 601px) and (max-width: 900px) {
+  .pie-flotante {
+    position: static;
+    width: 100%;
+    left: unset;
+    right: unset;
+    bottom: unset;
+    z-index: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-8) 0 0 0;
+    background: none;
+    box-shadow: none;
+    pointer-events: auto;
+  }
+  .contenedor-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+    padding: var(--space-1) var(--space-2);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 420px;
+    font-size: var(--font-size-xs);
+    margin: 0 var(--space-2) var(--space-2) var(--space-2);
+    background: var(--fondo-nav);
+    border: 1px solid var(--color-borde);
+    box-shadow: var(--shadow-sm);
+  }
+  .texto-footer {
+    font-size: var(--font-size-xs);
+    text-align: center;
+    max-width: 100%;
+    word-break: break-word;
+    margin: 0;
+    background: none;
+  }
+  .enlace-legal {
+    font-size: var(--font-size-xs);
+    padding: var(--space-1) var(--space-2);
+    gap: var(--space-1);
+    border-radius: 8px;
+    max-width: 100%;
+    word-break: break-word;
+    background: none;
+    border: none;
+    margin: 0;
+    min-height: 22px;
+    display: flex;
+    align-items: center;
+  }
+}

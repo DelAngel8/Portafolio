@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('templates/head', { 
+    title: 'Portafolio - Jair Martinez', 
+    description: 'Proyectos y trabajos destacados realizados por Jair Martinez.'
+}) %>
+
+<body>
+    <%- include('templates/header') %>
+
+    <!-- ================================
+        CONTENIDO PRINCIPAL - PORTAFOLIO
+        ================================ -->
+    <main role="main">
+        <section id="portafolio" aria-labelledby="titulo-portafolio">
+            <!-- Portada destacada -->
+            <div class="portada-portafolio minimal">
+                <span class="portada-acento"></span>
+                <h2 class="portada-titulo minimal">Hola, soy Jair.<br><span>Esto es lo que he construido.</span></h2>
+                <p class="portada-descripcion minimal">Descubre una colección de proyectos web, experimentos y soluciones digitales hechas con dedicación y creatividad. Inspírate y explora.</p>
+            </div>
+
+            <!-- Grid de proyectos -->
+            <div class="cajas-portafolio" role="list">
+                <% if (proyectos && proyectos.length > 0) { %>
+                    <% proyectos.forEach((proyecto) => { %>
+                        <article class="caja-portafolio" 
+                                 role="listitem" 
+                                 onclick="window.location.href='/proyectos/<%= proyecto.id %>';"
+                                 style="cursor: pointer;">
+                            <div class="imagen-container">
+                                <img src="<%= proyecto.imagen_url %>" 
+                                     alt="<%= proyecto.nombre %>" 
+                                     loading="lazy" 
+                                     width="400" 
+                                     height="180">
+                                <div class="info-proyecto">
+                                    <h3><%= proyecto.nombre %></h3>
+                                    <time class="fecha-proyecto" datetime="<%= proyecto.fecha_proyecto %>">
+                                        <%= new Date(proyecto.fecha_proyecto).toLocaleDateString('es-ES', { year: 'numeric', month: 'long' }) %>
+                                    </time>
+                                </div>
+                            </div>
+                                <button type="button" 
+                                    aria-label="Ver detalles de <%= proyecto.nombre %>"
+                                    onclick="event.stopPropagation(); window.location.href='/proyectos/<%= proyecto.id %>';">
+                                Ver Proyecto
+                            </button>
+                        </article>
+                    <% }); %>
+                <% } else { %>
+                    <p style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
+                        No hay proyectos disponibles en este momento.
+                    </p>
+                <% } %>
+            </div>
+        </section>
+    </main>
+
+    <%- include('templates/footer') %>
+</body>
+
+</html>

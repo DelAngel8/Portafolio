@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('templates/head', { 
+    title: proyecto ? proyecto.nombre + ' - Jair Martinez' : 'Proyectos - Jair Martinez', 
+    description: proyecto ? proyecto.descripcion : 'Detalle del proyecto'
+}) %>
+
+<body>
+    <%- include('templates/header') %>
+
+    <!-- ================================
+        CONTENIDO PRINCIPAL - DETALLE PROYECTO
+        ================================ -->
+    <main role="main">
+        <% if (proyecto) { %>
+            <section id="proyecto-detalle" aria-labelledby="titulo-proyecto">
+                <!-- Imagen destacada del proyecto -->
+                <figure class="proyecto-imagen-destacada">
+                    <img src="<%= proyecto.imagen_url %>" 
+                         alt="<%= proyecto.nombre %>" 
+                         loading="lazy">
+                </figure>
+
+                <!-- Contenido principal del proyecto -->
+                <article class="proyecto-contenido">
+                    <!-- Encabezado con título y fecha -->
+                    <header class="proyecto-encabezado">
+                        <h2 id="titulo-proyecto"><%= proyecto.nombre %></h2>
+                        <time class="proyecto-fecha" datetime="<%= proyecto.fecha_proyecto %>">
+                            <%= new Date(proyecto.fecha_proyecto).toLocaleDateString('es-ES', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                            }) %>
+                        </time>
+                    </header>
+
+                    <!-- Estado del proyecto -->
+                    <div class="proyecto-estado">
+                        <span class="badge badge-<%= proyecto.estado %>" role="status">
+                            <%= proyecto.estado === 'en-progreso' ? 'En Progreso' : 
+                                proyecto.estado === 'pausado' ? 'Pausado' : 'Completado' %>
+                        </span>
+                    </div>
+
+                    <!-- Descripción del proyecto -->
+                    <section class="proyecto-descripcion">
+                        <h3>Descripción</h3>
+                        <p><%= proyecto.descripcion %></p>
+                    </section>
+
+                    <!-- Tecnologías utilizadas -->
+                    <section class="proyecto-tecnologias">
+                        <h3>Tecnologías Utilizadas</h3>
+                        <ul class="tech-list">
+                            <% 
+                                const techs = proyecto.tecnologias.split(',').map(t => t.trim());
+                                techs.forEach(tech => {
+                            %>
+                                <li><span class="tech-tag"><%= tech %></span></li>
+                            <% 
+                                }); 
+                            %>
+                        </ul>
+                    </section>
+
+                    <!-- Botones de acción -->
+                    <nav class="proyecto-acciones" aria-label="Acciones del proyecto">
+                        <a href="/portafolio" class="btn btn-secundario" aria-label="Volver al portafolio">
+                            ← Volver al Portafolio
+                        </a>
+                    </nav>
+                </article>
+            </section>
+        <% } else { %>
+            <section class="proyecto-no-encontrado">
+                <h2>Proyecto no encontrado</h2>
+                <p>Lo sentimos, el proyecto que buscas no existe.</p>
+                <a href="/portafolio" class="btn btn-primario">Volver al Portafolio</a>
+            </section>
+        <% } %>
+    </main>
+
+    <%- include('templates/footer') %>
+</body>
+
+</html>

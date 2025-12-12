@@ -1,0 +1,42 @@
+<!-- ================================
+    HEAD - Metadatos y recursos
+    ================================ -->
+
+<head>
+    <!-- Codificación y viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="<%= description || 'Jair Martinez - Desarrollador Web Full Stack, diseñador y creador de soluciones digitales, UX/UI.' %>" />
+    <meta name="keywords" content="Jair Martinez, Desarrollador Web, Full Stack, Diseñador, UX/UI, Soluciones Digitales, Desarrollo Web" />
+    <meta name="author" content="Jair Martinez" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags (para compartir en redes sociales) -->
+    <meta property="og:title" content="<%= title || 'Jair Martinez - Desarrollador Web Full Stack' %>" />
+    <meta property="og:description" content="<%= description || 'Desarrollador Web Full Stack, diseñador y creador de soluciones digitales' %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/img/favicon.svg" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
+    <link rel="apple-touch-icon" href="/img/favicon.svg" />
+
+    <!-- Preload de fuentes críticas (paths corregidos) -->
+    <link rel="preload" href="/fonts/inter-regular/Inter18pt-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Outfit-regular/Outfit-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- Preload adicional para la variante bold (opcional) -->
+    <link rel="preload" href="/fonts/Outfit-regular/Outfit-Bold.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="/css/styles.index.css?v=2" />
+
+    <!-- Scripts externos -->
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js" defer></script>
+
+    <!-- Script principal -->
+    <script src="/js/script.js" defer></script>
+
+    <!-- Título de la página -->
+    <title><%= title || 'Jair Martinez - Desarrollador Web Full Stack' %></title>
+</head>
