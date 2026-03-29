@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('templates/head', { 
+    title: 'Software a Medida para tu Empresa - Jair Martinez', 
+    description: 'Software y aplicaciones web personalizadas para tu empresa. Olvídate de las soluciones genéricas y conseguir una que funcione exactamente como necesitas.'
+}) %>
+
+<body>
+    <%- include('templates/header') %>
+
+    <main role="main">
+        <!-- HERO SECTION -->
+        <section id="saas-hero" class="saas-hero">
+            <div class="saas-hero-content">
+                <span class="saas-badge">Software penseado para tu empresa</span>
+                <h1 class="saas-title">Tu empresa merece un software <span class="highlight">hecho a medida</span></h1>
+                <p class="saas-subtitle">
+                    Olvídate de las soluciones genéricas. Creo aplicaciones web y SaaS 
+                    que se adaptan exactamente a cómo funciona tu negocio, no al revés.
+                </p>
+                <div class="saas-hero-cta">
+                    <a href="/contacto" class="btn-saas-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        Hablamos de tu proyecto
+                    </a>
+                    <a href="#beneficios" class="btn-saas-secondary">
+                        Ver beneficios
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <polyline points="19 12 12 19 5 12" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="saas-hero-visual">
+                    <div class="saas-mockup">
+                        <div class="mockup-header">
+                            <span class="mockup-dot red"></span>
+                            <span class="mockup-dot yellow"></span>
+                            <span class="mockup-dot green"></span>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="mockup-sidebar"></div>
+                            <div class="mockup-main">
+                                <div class="mockup-chart"></div>
+                                <div class="mockup-cards">
+                                    <div class="mockup-card"></div>
+                                    <div class="mockup-card"></div>
+                                    <div class="mockup-card"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROBLEMA / SOLUCIÓN -->
+        <section id="problema" class="saas-problema">
+            <div class="saas-problema-content">
+                <div class="saas-problema-texto">
+                    <h2>¿Por qué el software genérico no funciona para tu empresa?</h2>
+                    <p>Los ERPs, CRMs y herramientas "todo en uno" están diseñados para adaptarse a miles de empresas. Pero tu negocio es único.:<br><br>
+                    
+                    <strong>✓</strong> Pagas por funcionalidades que nunca usarás<br>
+                    <strong>✓</strong> Debes cambiar tus procesos para usar el software<br>
+                    <strong>✓</strong> El soporte es lento y genérico<br>
+                    <strong>✓</strong> Sin control sobre actualizaciones y precios</p>
+                </div>
+                <div class="saas-solucion-card">
+                    <div class="solucion-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                            <path d="M2 17l10 5 10-5" />
+                            <path d="M2 12l10 5 10-5" />
+                        </svg>
+                    </div>
+                    <h3>La alternativa: SaaS personalizado</h3>
+                    <p>Software construido específicamente para tu modelo de negocio, con las funcionalidades que necesitas, el flujo de trabajo que prefieres y escalabilidad real.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BENEFICIOS -->
+        <section id="beneficios" class="saas-beneficios">
+            <div class="saas-beneficios-header">
+                <h2>Lo que ganas con un software a medida</h2>
+                <p>Inversión que se paga solo en eficiencia y control</p>
+            </div>
+            <div class="saas-beneficios-grid">
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                            <line x1="9" y1="9" x2="9.01" y2="9" />
+                            <line x1="15" y1="9" x2="15.01" y2="9" />
+                        </svg>
+                    </div>
+                    <h3>Adaptado 100%</h3>
+                    <p>Cada módulo, flujo y pantalla se diseña según cómo trabajas tú. Sin compromisos.</p>
+                </div>
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <h3>Datos propios</h3>
+                    <p>Tu información almacenada en tu propia infraestructura. Sin dependencia de terceros.</p>
+                </div>
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                            <line x1="12" y1="22.08" x2="12" y2="12" />
+                        </svg>
+                    </div>
+                    <h3>Escalable</h3>
+                    <p>El software crece con tu empresa. Añades usuarios, módulos o funcionalidades cuando quieras.</p>
+                </div>
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                            <line x1="1" y1="10" x2="23" y2="10" />
+                        </svg>
+                    </div>
+                    <h3>Soporte directo</h3>
+                    <p>Sin tickets anónimos. Me llamas o escribes directamente y resuelves rápido.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESO -->
+        <section id="proceso" class="saas-proceso">
+            <div class="saas-proceso-header">
+                <h2>¿Cómo trabajamos juntos?</h2>
+                <p>Un proceso claro y transparente</p>
+            </div>
+            <div class="saas-proceso-steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <h3>Discovery</h3>
+                    <p>Analizamos tu negocio, procesos actuales y objetivos. Definimos scope y funcionalidades clave.</p>
+                </div>
+                <div class="step-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <h3>Desarrollo</h3>
+                    <p>Construcción iterativa con pruebas continuas. Prototipos funcionales desde el inicio.</p>
+                </div>
+                <div class="step-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <h3>Lanzamiento</h3>
+                    <p>Despliegue en tu infraestructura o nube. Capacitación y documentación completa.</p>
+                </div>
+                <div class="step-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                </div>
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <h3>Soporte</h3>
+                    <p>Mantenimiento continuo, actualizaciones y nuevas funcionalidades según necesites.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CASOS DE USO -->
+        <section id="casos" class="saas-casos">
+            <div class="saas-casos-header">
+                <h2>¿Qué tipo de software puedo crear?</h2>
+                <p>Algunas ideas de lo que ya he construido o puedo construir</p>
+            </div>
+            <div class="saas-casos-grid">
+                <div class="caso-card">
+                    <div class="caso-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                            <line x1="8" y1="21" x2="16" y2="21" />
+                            <line x1="12" y1="17" x2="12" y2="21" />
+                        </svg>
+                    </div>
+                    <h3>CRM a medida</h3>
+                    <p>Gestión de clientes, seguimiento de ventas, pipelines personalizados para tu proceso comercial.</p>
+                </div>
+                <div class="caso-card">
+                    <div class="caso-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                            <path d="M3.27 6.96L12 12.01l8.73-5.05" />
+                            <path d="M12 22.08V12" />
+                        </svg>
+                    </div>
+                    <h3>ERP simplificado</h3>
+                    <p>Control de inventario, pedidos, facturación y reporting adaptado a tu operativa.</p>
+                </div>
+                <div class="caso-card">
+                    <div class="caso-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                    </div>
+                    <h3>Portal de clientes</h3>
+                    <p>Área privada para que tus clientes accedan a sus datos, statuses, documentos y funcionalidades.</p>
+                </div>
+                <div class="caso-card">
+                    <div class="caso-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                            <polyline points="10 9 9 9 8 9" />
+                        </svg>
+                    </div>
+                    <h3>Sistemas de gestión</h3>
+                    <p>Software para gestión de recursos humanos, proyectos, tickets y helpdesk interno.</p>
+                </div>
+                <div class="caso-card">
+                    <div class="caso-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10" />
+                            <line x1="12" y1="20" x2="12" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="14" />
+                        </svg>
+                    </div>
+                    <h3>Dashboards & Analytics</h3>
+                    <p>Visualización de métricas de negocio en tiempo real. KPIs personalizados para tu empresa.</p>
+                </div>
+                <div class="caso-card">
+                    <div class="caso-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                    </div>
+                    <h3>Apps & Integraciones</h3>
+                    <p>Aplicaciones web, integraciones con APIs existentes, automatizaciones y flujos de trabajo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECHNOLOGIES -->
+        <section id="tecnologias" class="saas-tech">
+            <div class="saas-tech-header">
+                <h2>Tecnologías que uso</h2>
+                <p>Stack moderno para proyectos robustos y escalables</p>
+            </div>
+            <div class="saas-tech-grid">
+                <div class="tech-group">
+                    <h4>Frontend</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">HTML5/CSS3</span>
+                    </div>
+                </div>
+                <div class="tech-group">
+                    <h4>Backend</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">REST APIs</span>
+                    </div>
+                </div>
+                <div class="tech-group">
+                    <h4>Base de Datos</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                </div>
+                <div class="tech-group">
+                    <h4>Cloud & DevOps</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Vercel</span>
+                        <span class="tech-tag">Git</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="saas-cta">
+            <div class="saas-cta-content">
+                <h2>¿Tienes una idea?</h2>
+                <p>Hablemos. No te vendo un software, te ayudo a resolver un problema de negocio.</p>
+                <a href="/contacto" class="btn-saas-primary btn-large">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    Cuéntame sobre tu proyecto
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <%- include('templates/footer') %>
+</body>
+
+</html>

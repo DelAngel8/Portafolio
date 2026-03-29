@@ -27,6 +27,7 @@ const ROUTES = [
   { path: "/sobre-mi", view: "sobre-mi" },
   { path: "/portafolio", view: "portafolio" },
   { path: "/servicios", view: "servicios" },
+  { path: "/software-empresas", view: "software-empresas" },
   { path: "/contacto", view: "contacto" }
 ];
 
