@@ -2377,26 +2377,94 @@ h3 {
 
 /* CTA Final */
 .saas-cta {
-  padding: var(--space-12) var(--space-4);
-  background: linear-gradient(135deg, var(--fondo-primario) 0%, var(--color-acento) 150%);
+  position: relative;
+  padding: var(--space-12) var(--space-6);
+  background: var(--fondo-secundario);
   text-align: center;
+  overflow: hidden;
+}
+
+.cta-acento-superior {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--color-acento), transparent);
+}
+
+.cta-acento-inferior {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--color-acento), transparent);
 }
 
 .saas-cta-content {
-  max-width: 600px;
+  position: relative;
+  max-width: 640px;
   margin: 0 auto;
+  padding: var(--space-8);
+  background: var(--fondo-primario);
+  border-radius: 16px;
+  border: 1px solid var(--color-borde);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.cta-badge {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  background: rgba(255, 167, 38, 0.1);
+  border: 1px solid rgba(255, 167, 38, 0.3);
+  border-radius: 50px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-acento);
+  margin-bottom: var(--space-4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .saas-cta h2 {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-3xl);
   margin-bottom: var(--space-3);
   color: var(--texto-primario);
+  line-height: 1.2;
 }
 
 .saas-cta p {
   color: var(--texto-secundario);
   margin-bottom: var(--space-6);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-acciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.cta-alternative {
+  font-size: var(--font-size-sm);
+  color: var(--texto-secundario);
+}
+
+.cta-link {
+  color: var(--color-acento);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: var(--transicion);
+}
+
+.cta-link:hover {
+  color: var(--color-acento-hover);
 }
 
 .btn-large {
@@ -2501,6 +2569,19 @@ h3 {
   .saas-tech,
   .saas-cta {
     padding: var(--space-8) var(--space-2);
+  }
+
+  .saas-cta-content {
+    padding: var(--space-6) var(--space-4);
+    margin: 0 var(--space-2);
+  }
+
+  .saas-cta h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .saas-cta p {
+    font-size: var(--font-size-base);
   }
   
   .saas-beneficios-grid {
